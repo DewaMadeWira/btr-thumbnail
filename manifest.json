@@ -1,0 +1,46 @@
+{
+    "manifest_version": 3,
+    "name": "Hello Extensions",
+    "description": "Base Level Extension",
+    "version": "1.0",
+    "action": {
+        "default_popup": "hello.html",
+        "default_icon": "icons/icon128.png"
+    },
+    "host_permissions": [
+        "https://slc.polinema.ac.id/spada/*",
+        "https://lmsslc.polinema.ac.id/*"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "https://slc.polinema.ac.id/spada/*",
+                "https://lmsslc.polinema.ac.id/*"
+            ],
+            "js": [
+                "index.js"
+            ],
+            "run_at": "document_idle"
+        }
+    ],
+    "permissions": [
+        "nativeMessaging"
+    ],
+    "icons": {
+        "16": "icons/icon16.png",
+        "32": "icons/icon32.png",
+        "48": "icons/icon48.png",
+        "128": "icons/icon128.png"
+    },
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "assets/*.png",
+                "assets/*.jpeg"
+            ],
+            "matches": [
+                "*://*/*"
+            ]
+        }
+    ]
+}
