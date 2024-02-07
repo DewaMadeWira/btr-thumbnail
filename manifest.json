@@ -22,9 +22,11 @@
         }
     ],
     "permissions": [
-        "storage",
         "nativeMessaging",
-        "scripting"
+        "activeTab",
+        "scripting",
+        "storage",
+        "tabs"
     ],
     "icons": {
         "16": "icons/icon16.png",
