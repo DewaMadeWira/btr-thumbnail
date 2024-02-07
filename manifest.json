@@ -8,14 +8,12 @@
         "default_icon": "icons/icon128.png"
     },
     "host_permissions": [
-        "https://slc.polinema.ac.id/spada/*",
-        "https://lmsslc.polinema.ac.id/*"
+        "https://www.youtube.com/*"
     ],
     "content_scripts": [
         {
             "matches": [
-                "https://slc.polinema.ac.id/spada/*",
-                "https://lmsslc.polinema.ac.id/*"
+                "https://www.youtube.com/*"
             ],
             "js": [
                 "index.js"
@@ -24,7 +22,9 @@
         }
     ],
     "permissions": [
-        "nativeMessaging"
+        "storage",
+        "nativeMessaging",
+        "scripting"
     ],
     "icons": {
         "16": "icons/icon16.png",
