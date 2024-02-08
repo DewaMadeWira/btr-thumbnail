@@ -1,3 +1,12 @@
+// document.addEventListener(
+//     'DOMContentLoaded',
+//     () => {
+//         const button = document.getElementById('button');
+//         const buttonText = document.getElementById('buttonText');
+//     },
+//     false
+// );
+
 (() => {
     const mykey = 'isEnabled';
 
@@ -26,13 +35,13 @@
     //     // resolve(value);
     // });
 
-    const button = document.getElementById('button');
     // console.log(enabled);
     chrome.storage.local.get([mykey]).then((result) => {
         console.log(result.isEnabled);
         var enabled = result.isEnabled;
 
         if (result.isEnabled == true) {
+            buttonText.innerText = 'Off';
             const thumbnailQuery =
                 "ytd-thumbnail:not(.ytd-video-preview, .ytd-rich-grid-slim-media) a > yt-image > img.yt-core-image:only-child:not(.yt-core-attributed-string__image-element),.ytp-videowall-still-image:not([style*='extension:'])";
 
@@ -53,12 +62,14 @@
                     image.parentElement.appendChild(overlay);
                 } else if (image.nodeName == 'DIV') {
                     image.style.backgroundImage =
-                        `url("${imageUrl}"), ` + image.style.backgroundImage;
+                        `url("assets/ryologo.png"), ` +
+                        image.style.backgroundImage;
                 }
             });
             console.log('plugin is on');
         } else {
             console.log('Extension turned off');
+            buttonText.innerText = 'On';
         }
         button.addEventListener('click', () => {
             chrome.storage.local.set({ isEnabled: !enabled }).then(() => {
