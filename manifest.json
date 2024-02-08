@@ -1,10 +1,10 @@
 {
     "manifest_version": 3,
-    "name": "Hello Extensions",
-    "description": "Base Level Extension",
+    "name": "BTR Extensions",
+    "description": "Add Bocchi the Rock character to Youtube thumbnail ",
     "version": "1.0",
     "action": {
-        "default_popup": "hello.html",
+        "default_popup": "btr.html",
         "default_icon": "icons/icon128.png"
     },
     "host_permissions": [
@@ -16,8 +16,7 @@
                 "https://www.youtube.com/*"
             ],
             "js": [
-                "background.js",
-                "popup.js"
+                "index.js"
             ],
             "run_at": "document_idle"
         }
