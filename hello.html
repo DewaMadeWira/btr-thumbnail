@@ -1,75 +1,72 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <link href="./output.css" rel="stylesheet" />
-    </head>
-    <body>
-        <div class="w-52 p-2 flex flex-col items-center h-72 justify-between">
-            <h1 class="text-xl text-center">Bocchi the Rock Thumbnail</h1>
+<link href="./output.css" rel="stylesheet" />
+<head>
+    <!-- <script src="index.js"></script> -->
+</head>
+<body>
+    <div class="w-52 p-2 flex flex-col items-center h-72 justify-between">
+        <h1 class="text-xl text-center">Bocchi the Rock Thumbnail</h1>
 
-            <div class="flex justify-around w-full">
-                <div class="flex flex-col items-center">
-                    <img src="./assets/ryologo.png" alt="" width="80px" />
-                    <div class="flex">
-                        <input
-                            type="checkbox"
-                            id="ryo"
-                            name="character"
-                            value="ryo"
-                        />
-                        <label class="text-md ml-2" for="ryo">Ryo</label><br />
-                    </div>
-                </div>
-                <div class="flex flex-col items-center">
-                    <img src="./assets/ryologo.png" alt="" width="80px" />
-                    <div class="flex">
-                        <input
-                            type="checkbox"
-                            id="bocchi"
-                            name="character"
-                            value="bocchi"
-                        />
-                        <label class="text-md ml-2" for="bocchi">Bocchi</label
-                        ><br />
-                    </div>
+        <div class="flex justify-around w-full">
+            <div class="flex flex-col items-center">
+                <img src="./assets/ryologo.png" alt="" width="80px" />
+                <div class="flex">
+                    <input
+                        type="checkbox"
+                        id="ryo"
+                        name="character"
+                        value="ryo"
+                    />
+                    <label class="text-md ml-2" for="ryo">Ryo</label><br />
                 </div>
             </div>
-            <div class="flex justify-around w-full">
-                <div class="flex flex-col items-center">
-                    <img src="./assets/ryologo.png" alt="" width="80px" />
-                    <div class="flex">
-                        <input
-                            type="checkbox"
-                            id="nijika"
-                            name="character"
-                            value="nijika"
-                        />
-                        <label class="text-md ml-2" for="nijika">Nijika</label>
-                    </div>
-                </div>
-                <div class="flex flex-col items-center">
-                    <img src="./assets/ryologo.png" alt="" width="80px" />
-                    <div class="flex">
-                        <input
-                            type="checkbox"
-                            id="kita"
-                            name="character"
-                            value="kita"
-                        />
-                        <label class="text-md ml-2" for="kita">Kita</label>
-                    </div>
+            <div class="flex flex-col items-center">
+                <img src="./assets/ryologo.png" alt="" width="80px" />
+                <div class="flex">
+                    <input
+                        type="checkbox"
+                        id="bocchi"
+                        name="character"
+                        value="bocchi"
+                    />
+                    <label class="text-md ml-2" for="bocchi">Bocchi</label
+                    ><br />
                 </div>
             </div>
-            <button
-                id="button"
-                class="text-md bg-blue-600 p-2 text-white rounded-md"
-            >
-                Turn
-                <p id="buttonText" class="font-bold">.</p>
-                Extension
-            </button>
         </div>
-        <!-- <script src="ui.js"></script> -->
-        <script src="index.js"></script>
-    </body>
-</html>
+        <div class="flex justify-around w-full">
+            <div class="flex flex-col items-center">
+                <img src="./assets/ryologo.png" alt="" width="80px" />
+                <div class="flex">
+                    <input
+                        type="checkbox"
+                        id="nijika"
+                        name="character"
+                        value="nijika"
+                    />
+                    <label class="text-md ml-2" for="nijika">Nijika</label>
+                </div>
+            </div>
+            <div class="flex flex-col items-center">
+                <img src="./assets/ryologo.png" alt="" width="80px" />
+                <div class="flex">
+                    <input
+                        type="checkbox"
+                        id="kita"
+                        name="character"
+                        value="kita"
+                    />
+                    <label class="text-md ml-2" for="kita">Kita</label>
+                </div>
+            </div>
+        </div>
+        <button
+            id="button"
+            class="text-md bg-blue-600 p-2 text-white rounded-md"
+        >
+            Turn
+            <p id="buttonText" class="font-bold">.</p>
+            Extension
+        </button>
+    </div>
+    <script src="popup.js"></script>
+</body>

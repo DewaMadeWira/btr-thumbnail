@@ -16,7 +16,8 @@
                 "https://www.youtube.com/*"
             ],
             "js": [
-                "index.js"
+                "background.js",
+                "popup.js"
             ],
             "run_at": "document_idle"
         }
