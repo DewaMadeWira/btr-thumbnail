@@ -1,8 +1,3 @@
-const button = document.getElementById('button');
-const buttonText = document.getElementById('buttonText');
-
-const mykey = 'isEnabled';
-
 // const toPromise = (callback) => {
 //     const promise = new Promise((resolve, reject) => {
 //         try {
@@ -27,59 +22,65 @@ const mykey = 'isEnabled';
 //     const value = result.isEnabled;
 //     // resolve(value);
 // });
+window.addEventListener('load', (ev) => {
+    const mykey = 'isEnabled';
+    const button = document.getElementById('button');
+    const buttonText = document.getElementById('buttonText');
 
-// console.log(enabled);
-chrome.storage.local.get([mykey]).then((result) => {
-    console.log(result.isEnabled);
-    var enabled = result.isEnabled;
+    chrome.storage.local.get([mykey]).then((result) => {
+        console.log(result.isEnabled);
+        var enabled = result.isEnabled;
 
-    if (result.isEnabled == true) {
-        const thumbnailQuery =
-            "ytd-thumbnail:not(.ytd-video-preview, .ytd-rich-grid-slim-media) a > yt-image > img.yt-core-image:only-child:not(.yt-core-attributed-string__image-element),.ytp-videowall-still-image:not([style*='extension:'])";
+        if (result.isEnabled == true) {
+            const thumbnailQuery =
+                "ytd-thumbnail:not(.ytd-video-preview, .ytd-rich-grid-slim-media) a > yt-image > img.yt-core-image:only-child:not(.yt-core-attributed-string__image-element),.ytp-videowall-still-image:not([style*='extension:'])";
 
-        const thumbnail = document.querySelectorAll(thumbnailQuery);
-        thumbnail.forEach((image) => {
-            if (image.nodeName == 'IMG') {
-                const overlay = document.createElement('img');
-                overlay.src = chrome.runtime.getURL(`assets/ryologo.png`);
+            const thumbnail = document.querySelectorAll(thumbnailQuery);
+            thumbnail.forEach((image) => {
+                if (image.nodeName == 'IMG') {
+                    const overlay = document.createElement('img');
+                    overlay.src = chrome.runtime.getURL(`assets/ryologo.png`);
 
-                overlay.style.position = 'absolute';
-                overlay.style.bottom = '0';
-                overlay.style.right = '0';
-                overlay.style.width = '40%';
-                overlay.style.height = '50%';
-                overlay.style.zIndex = '0';
+                    overlay.style.position = 'absolute';
+                    overlay.style.bottom = '0';
+                    overlay.style.right = '0';
+                    overlay.style.width = '40%';
+                    overlay.style.height = '50%';
+                    overlay.style.zIndex = '0';
 
-                image.style.position = 'relative';
-                image.parentElement.appendChild(overlay);
-            } else if (image.nodeName == 'DIV') {
-                image.style.backgroundImage =
-                    `url("assets/ryologo.png"), ` + image.style.backgroundImage;
-            }
+                    image.style.position = 'relative';
+                    image.parentElement.appendChild(overlay);
+                } else if (image.nodeName == 'DIV') {
+                    image.style.backgroundImage =
+                        `url("assets/ryologo.png"), ` +
+                        image.style.backgroundImage;
+                }
+            });
+            buttonText.innerText = 'Off';
+            console.log('plugin is on');
+        } else {
+            buttonText.innerText = 'On';
+            console.log('Extension turned off');
+        }
+
+        button.addEventListener('click', () => {
+            chrome.storage.local.set({ isEnabled: !enabled }).then(() => {
+                console.log('Value is set to ' + !enabled);
+            });
+            window.close();
+            chrome.tabs.query(
+                { active: true, currentWindow: true },
+                function (tabs) {
+                    chrome.tabs.reload(tabs[0].id);
+                }
+            );
+
+            //  window.location.reload();
         });
-        buttonText.innerText = 'Off';
-        console.log('plugin is on');
-    } else {
-        console.log('Extension turned off');
-        buttonText.innerText = 'On';
-    }
-
-    button.addEventListener('click', () => {
-        chrome.storage.local.set({ isEnabled: !enabled }).then(() => {
-            console.log('Value is set to ' + !enabled);
-        });
-        window.close();
-        chrome.tabs.query(
-            { active: true, currentWindow: true },
-            function (tabs) {
-                chrome.tabs.reload(tabs[0].id);
-            }
-        );
-
-        //  window.location.reload();
+        // console.log('Button pressed');
     });
-    // console.log('Button pressed');
 });
+// console.log(enabled);
 
 // const imgsBw = document.querySelectorAll('.bw');
 // const imgsBg = document.querySelectorAll('.summary > .no-overflow > img');
